@@ -1,0 +1,12 @@
+# test-taskrunner.yaml
+apiVersion: batch.example.com/v1
+kind: TaskRunner
+metadata:
+  name: test-task
+  namespace: default
+spec:
+  command: ["echo", "Hello from TaskRunner!"]
+  image: "busybox:latest"
+  parallelism: 1
+  deadlineSeconds: 300
+  managementState: "Managed"

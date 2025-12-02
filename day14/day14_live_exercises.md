@@ -396,13 +396,13 @@ Set up efficient watch patterns using predicates from Day 13.
    func (r *TaskRunnerReconciler) SetupWithManager(mgr ctrl.Manager) error {
        return ctrl.NewControllerManagedBy(mgr).
            For(&batchv1.TaskRunner{}).
-           Owns(&kbatch.Job{}, reconciler.WithPredicates(r.jobPredicate())).
+           Owns(&kbatch.Job{}, builder.WithPredicates(r.jobPredicate())).
            Complete(r)
    }
 
    // Add import for reconciler and predicate
    import (
-       reconciler "sigs.k8s.io/controller-runtime/pkg/reconcile"
+       "sigs.k8s.io/controller-runtime/pkg/builder"
        "sigs.k8s.io/controller-runtime/pkg/predicate"
        "sigs.k8s.io/controller-runtime/pkg/event"
    )
